@@ -26,7 +26,7 @@ const covid19ImpactEstimator = (data) => {
     severeImpact: {}
   };
 
-  const days = timeToDays(data.timeToElapse, data.periodType);
+  const days = timeToDays(output.data.timeToElapse, output.data.periodType);
   output.impact.currentlyInfected = Math.trunc(data.reportedCases * 10);
   output.severeImpact.currentlyInfected = Math.trunc(data.reportedCases * 50);
   // eslint-disable-next-line max-len

@@ -54,8 +54,8 @@ export default class Impact {
     const timed = this.timeToDays();
     // const occupied = Math.round(this.beds * 0.65);
     // const availableBeds = Math.round(this.beds * 0.95);
-    const availableBedsForSevereCases = Math.round(this.beds * 0.35);
+    // const availableBedsForSevereCases = Math.round(this.beds * 0.35);
     const hospitalSevereCases = this.severeCases() * (2 ** timed);
-    return (availableBedsForSevereCases - hospitalSevereCases);
+    return (this.beds - hospitalSevereCases);
   }
 }

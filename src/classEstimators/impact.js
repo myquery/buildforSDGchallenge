@@ -55,6 +55,6 @@ export default class Impact {
     const timed = this.timeToDays();
     const availableBeds = Math.round(this.beds * 0.95);
     const availableBedsForSevereCases = Math.round(availableBeds * 0.35);
-    return (availableBedsForSevereCases * timed) - this.severeCases();
+    return (availableBedsForSevereCases * (2 ** timed)) - this.severeCases();
   }
 }

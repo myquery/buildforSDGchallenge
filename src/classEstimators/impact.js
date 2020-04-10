@@ -5,8 +5,6 @@ export default class Impact {
     this.time = time;
     this.beds = beds;
     this.elapseTime = elapseTime;
-    // eslint-disable-next-line no-console
-    console.log(this.timeToDays);
   }
 
   // Estimate the number per period of time
@@ -37,11 +35,13 @@ export default class Impact {
 
   // Compute infected impact per time
   infectedImpact() {
-    return Math.floor(this.currentlyInfectedByRegion(10) * (2 ** this.timeToDays));
+    const timed = this.timeToDays();
+    return Math.floor(this.currentlyInfectedByRegion(10) * (2 ** timed));
   }
 
   // Compute infected severe impact per time
   infectedSevereImpact() {
-    return Math.floor(this.currentlyInfectedByRegion(50) * (2 ** this.timeToDays));
+    const timed = this.timeToDays();
+    return Math.floor(this.currentlyInfectedByRegion(50) * (2 ** timed));
   }
 }

@@ -1,6 +1,8 @@
 // Estimate the number per period of time
 const timeToDays = (timeToElapse, periodType) => {
   switch (periodType) {
+    case 'days':
+      return timeToDays;
     case 'weeks':
       return timeToElapse * 7;
     case 'months':

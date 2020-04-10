@@ -52,10 +52,10 @@ export default class Impact {
 
   // Compute value for available beds per hospital
   availableBedsPerHospital() {
-    const timed = this.timeToDays();
+    // const timed = this.timeToDays();
     // const occupied = Math.round(this.beds * 0.65);
-    // const availableBeds = Math.round(this.beds * 0.95);
-    const availableBedsForSevereCases = Math.round(this.beds * 0.35);
+    const availableBeds = Math.round(this.beds * 0.95);
+    const availableBedsForSevereCases = Math.round(availableBeds * 0.35);
     const hospitalSevereCases = this.severeCases();
     return (availableBedsForSevereCases - hospitalSevereCases);
   }

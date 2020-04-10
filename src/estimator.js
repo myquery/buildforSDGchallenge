@@ -1,24 +1,21 @@
 import Impact from './classEstimators/impact';
 
-
 const covid19ImpactEstimator = (data) => {
   const {
-    reportedCases, timeToElapse, periodType, totalHospitalBeds
+    reportedCases, periodType, timeToElapse, totalHospitalBeds
   } = data;
-
-  const impactEstimators = new Impact(reportedCases, periodType, totalHospitalBeds, timeToElapse);
+  const estimator = new Impact(reportedCases, periodType, timeToElapse, totalHospitalBeds);
   const output = {
     data,
     impact: {
-      currentlyInfected: impactEstimators.currentlyInfectedByRegion(10),
-      infectionsByRequestedTime: impactEstimators.infectedImpact()
+      currentlyInfected: estimator.currentlyInfectedByRegion(10),
+      infectionsByRequestedTime: estimator.infectedImpact()
     },
     severeImpact: {
-      currentlyInfected: impactEstimators.currentlyInfectedByRegion(50),
-      infectionsByRequestedTime: impactEstimators.infectedSevereImpact()
+      currentlyInfected: estimator.currentlyInfectedByRegion(50),
+      infectionsByRequestedTime: estimator.infectedSevereImpact()
     }
   };
-
 
   return output;
 };

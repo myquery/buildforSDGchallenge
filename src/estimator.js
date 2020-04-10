@@ -19,11 +19,18 @@ const timeToDays = (timeToElapse, periodType) => {
   return days;
 };
 
+// Compute infected per time
+const infectedSnapshot = (currInfected, multiplyBydays) => currInfected * (2 ** multiplyBydays);
+
 // Compute available per hospital
-const availableBeds = (bedsPerHospital, severeCases) => (bedsPerHospital - severeCases) * 0.01;
+// eslint-disable-next-line max-len
+const availableBedsPerHospital = (bedsPerHospital, severeCases) => Math.floor((bedsPerHospital - severeCases) * 0.01);
 
 // Compute severe cases
-const infectedPerTime = (infected, multiply) => infected * multiply;
+const infectedPerTime = (infected, multiply) => Math.floor(infected * multiply);
+
+// Compute currently Infected with covid-19 per region
+const currentlyInfectedByRegion = (cases, multiply) => Math.trunc(cases * multiply);
 
 const covid19ImpactEstimator = (data) => {
   const output = {
@@ -31,18 +38,18 @@ const covid19ImpactEstimator = (data) => {
     impact: {},
     severeImpact: {}
   };
-
-  // Challenge 1
   const {
     reportedCases, timeToElapse, periodType, totalHospitalBeds
   } = output.data;
+
+  // Challenge 1
   const days = timeToDays(timeToElapse, periodType);
-  output.impact.currentlyInfected = Math.trunc(reportedCases * 10);
-  output.severeImpact.currentlyInfected = Math.trunc(reportedCases * 50);
+  output.impact.currentlyInfected = currentlyInfectedByRegion(reportedCases, 10);
+  output.severeImpact.currentlyInfected = currentlyInfectedByRegion(reportedCases, 50);
   // eslint-disable-next-line max-len
-  output.impact.infectionsByRequestedTime = output.impact.currentlyInfected * (2 ** days);
+  output.impact.infectionsByRequestedTime = infectedSnapshot(output.impact.currentlyInfected, days);
   // eslint-disable-next-line max-len
-  output.severeImpact.infectionsByRequestedTime = output.severeImpact.currentlyInfected * (2 ** days);
+  output.severeImpact.infectionsByRequestedTime = infectedSnapshot(output.severeImpact.currentlyInfected, days);
 
   // Challenge 2
   // eslint-disable-next-line max-len
@@ -50,10 +57,10 @@ const covid19ImpactEstimator = (data) => {
   // eslint-disable-next-line max-len
   output.severeImpact.severeCasesByRequestedTime = infectedPerTime(output.severeImpact.infectionsByRequestedTime, 0.15);
   // eslint-disable-next-line max-len
-  output.impact.hospitalBedsByRequestedTime = availableBeds(totalHospitalBeds, output.impact.severeCasesByRequestedTime);
+  output.impact.hospitalBedsByRequestedTime = availableBedsPerHospital(totalHospitalBeds, output.impact.severeCasesByRequestedTime);
 
   // eslint-disable-next-line max-len
-  output.severeImpact.hospitalBedsByRequestedTime = availableBeds(totalHospitalBeds, output.severeImpact.severeCasesByRequestedTime);
+  output.severeImpact.hospitalBedsByRequestedTime = availableBedsPerHospital(totalHospitalBeds, output.severeImpact.severeCasesByRequestedTime);
   return output;
 };
 

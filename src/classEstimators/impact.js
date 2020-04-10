@@ -35,11 +35,11 @@ export default class Impact {
 
   // Compute infected impact per time
   infectedImpact() {
-    return this.currentlyInfectedByRegion(10) * (2 ** this.timeToDays);
+    return Math.trunc(this.currentlyInfectedByRegion(10) * (2 ** this.timeToDays));
   }
 
   // Compute infected severe impact per time
   infectedSevereImpact() {
-    return this.currentlyInfectedByRegion(50) * (2 ** this.timeToDays);
+    return Math.trunc(this.currentlyInfectedByRegion(50) * (2 ** this.timeToDays));
   }
 }

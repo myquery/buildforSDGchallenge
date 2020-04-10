@@ -6,7 +6,7 @@ export default class Impact {
     this.beds = beds;
     this.elapseTime = elapseTime;
     // eslint-disable-next-line no-console
-    console.log(this.currentlyInfectedByRegion(50));
+    console.log(this.timeToDays);
   }
 
   // Estimate the number per period of time

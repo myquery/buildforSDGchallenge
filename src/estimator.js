@@ -4,7 +4,7 @@ const covid19ImpactEstimator = (data) => {
   const {
     reportedCases, periodType, timeToElapse, totalHospitalBeds
   } = data;
-  const estimator = new Impact(reportedCases, periodType, timeToElapse, totalHospitalBeds);
+  const estimator = new Impact(reportedCases, periodType, totalHospitalBeds, timeToElapse);
   const output = {
     data,
     impact: {

@@ -44,4 +44,16 @@ export default class Impact {
     const timed = this.timeToDays();
     return Math.floor(this.currentlyInfectedByRegion(50) * (2 ** timed));
   }
+
+  // Compute value for severeCasesByRequestedTime for Impact
+  severeCases() {
+    return Math.round(this.infectedImpact() * 0.15);
+  }
+
+  // Compute value for available beds per hospital
+  availableBedsPerHospital() {
+    const availableBeds = Math.round(this.beds * 0.95);
+    const availableBedsForSevereCases = Math.round(availableBeds * 0.35);
+    return availableBedsForSevereCases - this.severeCases();
+  }
 }

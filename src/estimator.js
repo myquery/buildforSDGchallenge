@@ -26,13 +26,15 @@ const covid19ImpactEstimator = (data) => {
     severeImpact: {}
   };
 
-  const days = timeToDays(output.data.timeToElapse, output.data.periodType);
-  output.impact.currentlyInfected = Math.trunc(data.reportedCases * 10);
-  output.severeImpact.currentlyInfected = Math.trunc(data.reportedCases * 50);
+  const { reportedCases, timeToElapse, periodType } = output.data;
+
+  const days = timeToDays(timeToElapse, periodType);
+  output.impact.currentlyInfected = Math.trunc(reportedCases * 10);
+  output.severeImpact.currentlyInfected = Math.trunc(reportedCases * 50);
   // eslint-disable-next-line max-len
-  output.impact.infectionsByRequestedTime = output.impact.currentlyInfected * (2 ** Math.floor(days / 3));
+  output.impact.infectionsByRequestedTime = output.impact.currentlyInfected * (2 ** days);
   // eslint-disable-next-line max-len
-  output.severeImpact.infectionsByRequestedTime = output.severeImpact.currentlyInfected * (2 ** Math.floor(days / 3));
+  output.severeImpact.infectionsByRequestedTime = output.severeImpact.currentlyInfected * (2 ** days);
   return output;
 };
 

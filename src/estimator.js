@@ -24,7 +24,7 @@ const infectedSnapshot = (currInfected, multiplyBydays) => currInfected * (2 ** 
 
 // Compute available per hospital
 // eslint-disable-next-line max-len
-const availableBedsPerHospital = (bedsPerHospital, severeCases, multiplyBydays) => Math.floor(((bedsPerHospital - severeCases) * multiplyBydays) * 0.35);
+const availableBedsPerHospital = (bedsPerHospital, severeCases, multiplyBydays) => Math.floor((bedsPerHospital * 0.35) - (severeCases * multiplyBydays));
 
 // Compute severe cases
 const infectedPerTime = (infected, multiply) => Math.floor(infected * multiply);

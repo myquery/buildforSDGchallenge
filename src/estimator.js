@@ -12,7 +12,7 @@ const timeToDays = (timeToElapse, periodType) => {
     const toDays = timeToElapse * 7;
     days = Math.floor(toDays / 3);
   }
-  if (this.periodType === 'months') {
+  if (periodType === 'months') {
     const toDays = timeToElapse * 30;
     days = Math.floor(toDays / 3);
   }

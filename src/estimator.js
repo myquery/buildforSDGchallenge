@@ -24,7 +24,7 @@ const infectedSnapshot = (currInfected, multiplyBydays) => currInfected * (2 ** 
 
 // Compute available per hospital
 // eslint-disable-next-line max-len
-const availableBedsPerHospital = (bedsPerHospital, severeCases) => Math.floor((bedsPerHospital - severeCases) * 0.01);
+const availableBedsPerHospital = (bedsPerHospital, severeCases, multiplyBydays) => Math.floor(((bedsPerHospital - severeCases) * (2 ** multiplyBydays)) * 0.01);
 
 // Compute severe cases
 const infectedPerTime = (infected, multiply) => Math.floor(infected * multiply);
@@ -57,10 +57,10 @@ const covid19ImpactEstimator = (data) => {
   // eslint-disable-next-line max-len
   output.severeImpact.severeCasesByRequestedTime = infectedPerTime(output.severeImpact.infectionsByRequestedTime, 0.15);
   // eslint-disable-next-line max-len
-  output.impact.hospitalBedsByRequestedTime = availableBedsPerHospital(totalHospitalBeds, output.impact.severeCasesByRequestedTime);
+  output.impact.hospitalBedsByRequestedTime = availableBedsPerHospital(totalHospitalBeds, output.impact.severeCasesByRequestedTime, days);
 
   // eslint-disable-next-line max-len
-  output.severeImpact.hospitalBedsByRequestedTime = availableBedsPerHospital(totalHospitalBeds, output.severeImpact.severeCasesByRequestedTime);
+  output.severeImpact.hospitalBedsByRequestedTime = availableBedsPerHospital(totalHospitalBeds, output.severeImpact.severeCasesByRequestedTime, days);
   return output;
 };
 

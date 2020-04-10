@@ -19,6 +19,12 @@ const timeToDays = (timeToElapse, periodType) => {
   return days;
 };
 
+// Compute available per hospital
+const availableBeds = (bedsPerHospital, severeCases) => (bedsPerHospital - severeCases) * 0.01;
+
+// Compute severe cases
+const infectedPerTime = (infected, multiply) => infected * multiply;
+
 const covid19ImpactEstimator = (data) => {
   const output = {
     data,
@@ -26,8 +32,10 @@ const covid19ImpactEstimator = (data) => {
     severeImpact: {}
   };
 
-  const { reportedCases, timeToElapse, periodType } = output.data;
-
+  // Challenge 1
+  const {
+    reportedCases, timeToElapse, periodType, totalHospitalBeds
+  } = output.data;
   const days = timeToDays(timeToElapse, periodType);
   output.impact.currentlyInfected = Math.trunc(reportedCases * 10);
   output.severeImpact.currentlyInfected = Math.trunc(reportedCases * 50);
@@ -35,6 +43,17 @@ const covid19ImpactEstimator = (data) => {
   output.impact.infectionsByRequestedTime = output.impact.currentlyInfected * (2 ** days);
   // eslint-disable-next-line max-len
   output.severeImpact.infectionsByRequestedTime = output.severeImpact.currentlyInfected * (2 ** days);
+
+  // Challenge 2
+  // eslint-disable-next-line max-len
+  output.impact.severeCasesByRequestedTime = infectedPerTime(output.impact.infectionsByRequestedTime, 0.15);
+  // eslint-disable-next-line max-len
+  output.severeImpact.severeCasesByRequestedTime = infectedPerTime(output.severeImpact.infectionsByRequestedTime, 0.15);
+  // eslint-disable-next-line max-len
+  output.impact.hospitalBedsByRequestedTime = availableBeds(totalHospitalBeds, output.impact.severeCasesByRequestedTime);
+
+  // eslint-disable-next-line max-len
+  output.severeImpact.hospitalBedsByRequestedTime = availableBeds(totalHospitalBeds, output.severeImpact.severeCasesByRequestedTime);
   return output;
 };
 

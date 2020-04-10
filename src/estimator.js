@@ -1,42 +1,29 @@
+// Estimate the number per period of time
+const timeToDays = (timeToElapse, periodType) => {
+  switch (periodType) {
+    case 'weeks':
+      return timeToElapse * 7;
+    case 'months':
+      return timeToElapse * 30;
+    default:
+      return timeToElapse;
+  }
+};
 const covid19ImpactEstimator = (data) => {
-  const input = data;
-  const avgIncome = input.region.avgDailyIncomeInUSD;
-  const currentlyInfected = () => input.reportedCase * 10;
-  const currentlySevereInfected = () => input.reportedCase * 50;
-  const infectionsByRequestedTime = () => currentlyInfected * 1024;
-  const severeCasesByRequestedTime = () => 0.15 * infectionsByRequestedTime;
-  const hospitalBedsByRequestedTime = () => input.totalHospitalBeds - severeCasesByRequestedTime;
-  const casesForICUByRequestedTime = () => 0.5 * infectionsByRequestedTime;
-  const casesForVentilatorsByRequestedTime = () => 0.2 * infectionsByRequestedTime;
-  const dollarsInFlight = () => {
-        if(avgIncome > 1.5){
-            return infectionsByRequestedTime * avgIncome * 30;
-        }else{
-            return   (infectionsByRequestedTime * 0.65) * avgIncome * 30;
-        }
-      
-    }
-  return{
-    data: input,
-    impact:{
-        currentlyInfected,
-        infectionsByRequestedTime,
-        severeCasesByRequestedTime,
-        hospitalBedsByRequestedTime,
-        casesForICUByRequestedTime,
-        casesForVentilatorsByRequestedTime,
-        dollarsInFlight
-        },
-    severeImpact: {
-        currentlySevereInfected,
-        infectionsByRequestedTime,
-        severeCasesByRequestedTime,
-        hospitalBedsByRequestedTime,
-        casesForICUByRequestedTime,
-        casesForVentilatorsByRequestedTime,
-        dollarsInFlight
-        }
-    }
+  const output = {
+    data,
+    impact: {},
+    severeImpact: {}
+  };
+
+  const days = timeToDays(data.timeToElapse, data.periodType);
+  output.impact.currentlyInfected = data.reportedCases * 10;
+  output.severeImpact.currentlyInfected = data.reportedCases * 50;
+  // eslint-disable-next-line max-len
+  output.impact.infectionsByRequestedTime = output.impact.currentlyInfected * (2 ** Math.floor(days / 3));
+  // eslint-disable-next-line max-len
+  output.severeImpact.infectionsByRequestedTime = output.severeImpact.currentlyInfected * (2 ** Math.floor(days / 3));
+  return output;
 };
 
 export default covid19ImpactEstimator;

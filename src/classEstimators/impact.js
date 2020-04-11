@@ -11,18 +11,18 @@ class Impact {
     let days;
     if (this.time === 'days') {
       if (this.elapseTime > 2) {
-        days = Math.floor(this.elapseTime / 3);
+        days = Math.trunc(this.elapseTime / 3);
       } else {
         days = 1;
       }
     }
     if (this.time === 'weeks') {
       const toDays = this.elapseTime * 7;
-      days = Math.floor(toDays / 3);
+      days = Math.trunc(toDays / 3);
     }
     if (this.time === 'months') {
       const toDays = this.elapseTime * 30;
-      days = Math.floor(toDays / 3);
+      days = Math.trunc(toDays / 3);
     }
     return days;
   }
@@ -35,13 +35,13 @@ class Impact {
   // Compute infected impact per time
   infectedImpact() {
     const timed = this.timeToDays();
-    return Math.floor(this.currentlyInfectedByRegion(10) * (2 ** timed));
+    return Math.trunc(this.currentlyInfectedByRegion(10) * (2 ** timed));
   }
 
   // Compute infected severe impact per time
   infectedSevereImpact() {
     const timed = this.timeToDays();
-    return Math.floor(this.currentlyInfectedByRegion(50) * (2 ** timed));
+    return Math.trunc(this.currentlyInfectedByRegion(50) * (2 ** timed));
   }
 
   // Compute value for severeCasesByRequestedTime for Impact

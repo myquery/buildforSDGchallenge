@@ -11,13 +11,15 @@ const covid19ImpactEstimator = (data) => {
       currentlyInfected: estimator.currentlyInfectedByRegion(10),
       infectionsByRequestedTime: estimator.infectedImpact(),
       severeCasesByRequestedTime: estimator.severeCases(),
-      hospitalBedsByRequestedTime: estimator.availableBedsPerHospital()
+      hospitalBedsByRequestedTime: estimator.availableBedsPerHospitalForImpact(),
+      casesForICUByRequestedTime: estimator.impactRequiredICU()
     },
     severeImpact: {
       currentlyInfected: estimator.currentlyInfectedByRegion(50),
       infectionsByRequestedTime: estimator.infectedSevereImpact(),
       severeCasesByRequestedTime: estimator.severeCases(),
-      hospitalBedsByRequestedTime: estimator.availableBedsPerHospital()
+      hospitalBedsByRequestedTime: estimator.availableBedsPerHospitalForSevere(),
+      casesForICUByRequestedTime: estimator.severeRequiredICU()()
     }
   };
 

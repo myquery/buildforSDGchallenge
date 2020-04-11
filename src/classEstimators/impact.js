@@ -45,17 +45,43 @@ class Impact {
   }
 
   // Compute value for severeCasesByRequestedTime for Impact
-  severeCases() {
+  impactCases() {
     const infected = this.infectedImpact();
     return Math.trunc(infected * 0.15);
   }
 
+  // Compute value for severeCasesByRequestedTime for severe cases
+  severeCases() {
+    const infected = this.infectedSevereImpact();
+    return Math.trunc(infected * 0.15);
+  }
+
   // Compute value for available beds per hospital
-  availableBedsPerHospital() {
+  availableBedsPerHospitalForImpact() {
+    const timed = this.timeToDays();
+    const availableBedsForSevereCases = this.beds * 0.35;
+    const hospitalSevereCases = this.impactCases() * timed;
+    return Math.trunc(availableBedsForSevereCases - hospitalSevereCases);
+  }
+
+  // Compute value for available beds per hospital
+  availableBedsPerHospitalForSevere() {
     const timed = this.timeToDays();
     const availableBedsForSevereCases = this.beds * 0.35;
     const hospitalSevereCases = this.severeCases() * timed;
     return Math.trunc(availableBedsForSevereCases - hospitalSevereCases);
+  }
+
+  // compute value for ICU patients
+  impactRequiredICU() {
+    const infected = this.infectedImpact();
+    return Math.trunc(0.05 * infected);
+  }
+
+  // compute value for ICU patients
+  severeRequiredICU() {
+    const infected = this.infectedSevereImpact();
+    return Math.trunc(0.05 * infected);
   }
 }
 

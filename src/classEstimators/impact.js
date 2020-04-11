@@ -46,13 +46,14 @@ class Impact {
 
   // Compute value for severeCasesByRequestedTime for Impact
   severeCases() {
-    return this.infectedImpact() * 0.15;
+    return Math.trunc(this.infectedImpact() * 0.15);
   }
 
   // Compute value for available beds per hospital
   availableBedsPerHospital() {
+    const timed = this.timeToDays();
     const availableBedsForSevereCases = 0.35 * this.beds;
-    const hospitalSevereCases = this.severeCases();
+    const hospitalSevereCases = this.severeCases() * timed;
     return Math.trunc(availableBedsForSevereCases - hospitalSevereCases);
   }
 }

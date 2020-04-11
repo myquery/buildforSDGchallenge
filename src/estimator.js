@@ -1,5 +1,6 @@
 import Impact from './classEstimators/impact';
 
+
 const covid19ImpactEstimator = (data) => {
   const {
     reportedCases, periodType, timeToElapse, totalHospitalBeds

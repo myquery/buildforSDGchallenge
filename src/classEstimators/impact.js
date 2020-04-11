@@ -83,6 +83,18 @@ class Impact {
     const infected = this.infectedSevereImpact();
     return Math.trunc(0.05 * infected);
   }
+
+  // compute value for required ventilators
+  impactCasesRequiredVentilator() {
+    const infected = this.infectedImpact();
+    return Math.trunc(0.02 * infected);
+  }
+
+  // compute value for required ventilators
+  severeCasesRequiredVentilator() {
+    const infected = this.infectedSevereImpact();
+    return Math.trunc(0.02 * infected);
+  }
 }
 
 export default Impact;

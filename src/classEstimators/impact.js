@@ -1,9 +1,11 @@
 class Impact {
-  constructor(cases, time, beds, elapseTime) {
+  constructor(cases, time, beds, elapseTime, avgIncome, avgPolution) {
     this.cases = cases;
     this.time = time;
     this.beds = beds;
     this.elapseTime = elapseTime;
+    this.avgIncome = avgIncome;
+    this.avgPolution = avgPolution;
   }
 
   // Estimate the number per period of time
@@ -94,6 +96,22 @@ class Impact {
   severeCasesRequiredVentilator() {
     const infected = this.infectedSevereImpact();
     return Math.trunc(0.02 * infected);
+  }
+
+  // compute dollar in flight to measure economic impact
+  getDollarsInFlightForImpactCases() {
+    const timed = this.timeToDays();
+    const infected = this.infectedImpact();
+    const economyLoseForImpactCases = infected * this.avgIncome * this.avgPolution * timed;
+    return economyLoseForImpactCases;
+  }
+
+  // compute dollar in flight to measure economic impact
+  getDollarsInFlightForSevereCases() {
+    const timed = this.timeToDays();
+    const infected = this.infectedSevereImpact();
+    const economyLoseForSevereCases = infected * this.avgIncome * this.avgPolution * timed;
+    return economyLoseForSevereCases;
   }
 }
 

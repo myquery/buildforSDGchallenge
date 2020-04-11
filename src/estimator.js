@@ -4,7 +4,11 @@ const covid19ImpactEstimator = (data) => {
   const {
     reportedCases, periodType, timeToElapse, totalHospitalBeds
   } = data;
-  const estimator = new Impact(reportedCases, periodType, totalHospitalBeds, timeToElapse);
+
+  const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = data;
+
+  // eslint-disable-next-line max-len
+  const estimator = new Impact(reportedCases, periodType, totalHospitalBeds, timeToElapse, avgDailyIncomeInUSD, avgDailyIncomePopulation);
   const output = {
     data,
     impact: {
@@ -13,7 +17,8 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: estimator.severeCases(),
       hospitalBedsByRequestedTime: estimator.availableBedsPerHospitalForImpact(),
       casesForICUByRequestedTime: estimator.impactRequiredICU(),
-      casesForVentilatorsByRequestedTime: estimator.impactCasesRequiredVentilator()
+      casesForVentilatorsByRequestedTime: estimator.impactCasesRequiredVentilator(),
+      dollarsInFlight: estimator.getDollarsInFlightForImpactCases()
     },
     severeImpact: {
       currentlyInfected: estimator.currentlyInfectedByRegion(50),
@@ -21,7 +26,8 @@ const covid19ImpactEstimator = (data) => {
       severeCasesByRequestedTime: estimator.severeCases(),
       hospitalBedsByRequestedTime: estimator.availableBedsPerHospitalForSevere(),
       casesForICUByRequestedTime: estimator.severeRequiredICU(),
-      casesForVentilatorsByRequestedTime: estimator.severeCasesRequiredVentilator()
+      casesForVentilatorsByRequestedTime: estimator.severeCasesRequiredVentilator(),
+      dollarsInFlight: estimator.getDollarsInFlightForSevereCases()
     }
   };
 

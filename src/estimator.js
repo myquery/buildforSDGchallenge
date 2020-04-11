@@ -7,8 +7,14 @@ const covid19ImpactEstimator = (data) => {
 
   const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = data;
 
-  // eslint-disable-next-line max-len
-  const estimator = new Impact(reportedCases, periodType, totalHospitalBeds, timeToElapse, avgDailyIncomeInUSD, avgDailyIncomePopulation);
+  const estimator = new Impact(
+    reportedCases,
+    periodType,
+    totalHospitalBeds,
+    timeToElapse,
+    avgDailyIncomeInUSD,
+    avgDailyIncomePopulation
+  );
   const output = {
     data,
     impact: {

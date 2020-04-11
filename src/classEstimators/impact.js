@@ -46,7 +46,7 @@ export default class Impact {
 
   // Compute value for severeCasesByRequestedTime for Impact
   severeCases() {
-    return Math.round(this.infectedImpact() * 0.15);
+    return Math.trunc(this.infectedImpact() * 0.15);
   }
 
   // Compute value for available beds per hospital
@@ -54,8 +54,8 @@ export default class Impact {
     // const timed = this.timeToDays();
     // const occupiedBed = Math.round(this.beds * 0.65);
     // const capacity = Math.round(this.beds ? this.beds * 0.90 : this.beds * 0.95);
-    const availableBedsForSevereCases = Math.ceil(this.beds * 0.35);
+    const availableBedsForSevereCases = this.beds * 0.35;
     const hospitalSevereCases = this.severeCases();
-    return Math.ceil(availableBedsForSevereCases - hospitalSevereCases);
+    return Math.trunc(availableBedsForSevereCases - hospitalSevereCases);
   }
 }

@@ -15,6 +15,8 @@ const currentlyInfected = (cases, multiplier) => cases * multiplier;
 const infectionsByReqTime = (infected, factor) => infected * factor;
 const avgOccupiedBeds = (availableBeds) => availableBeds * 0.65;
 const severeCasesByTime = (severeCases) => Math.trunc(severeCases * 0.15);
+const getCasesForICU = (infected) => infected * 0.05;
+const getCasesforVentilator = (infected) => infected * 0.02;
 
 const covid19ImpactEstimator = (data) => {
   /* first challenge */
@@ -61,37 +63,26 @@ const covid19ImpactEstimator = (data) => {
 
   const averageBedsOccupied = avgOccupiedBeds(totalHospitalBeds);
   const averageAvialableBeds = totalHospitalBeds - averageBedsOccupied;
-
-
-  // impact (second challenge)
   const severeCasesByReqTimeImpact = severeCasesByTime(impact.infectionsByRequestedTime);
   const hospitalBedsByReqTimeImpact = Math.trunc(averageAvialableBeds - severeCasesByReqTimeImpact);
 
   output.impact.severeCasesByRequestedTime = severeCasesByReqTimeImpact;
   output.impact.hospitalBedsByRequestedTime = hospitalBedsByReqTimeImpact;
 
-
-  // severe impact(second challenge)
   const severeCasesByReqTimeSevere = severeCasesByTime(severeImpact.infectionsByRequestedTime);
   const hospitalBedByReqTimeS = Math.trunc(averageAvialableBeds - severeCasesByReqTimeSevere);
 
   output.severeImpact.severeCasesByRequestedTime = severeCasesByReqTimeSevere;
   output.severeImpact.hospitalBedsByRequestedTime = hospitalBedByReqTimeS;
 
-  /* end of second challeg */
-
   /* Third challenge */
 
   // impact
-  const casesForICUByReqTimeImpact = (impact.infectionsByRequestedTime / 100) * 5;
-  const casesForVentByReqTimeI = (impact.infectionsByRequestedTime / 100) * 2;
+  const casesForICUByReqTimeImpact = getCasesForICU(impact.infectionsByRequestedTime);
+  const casesForVentByReqTimeI = getCasesforVentilator(impact.infectionsByRequestedTime);
 
-  // const ibrtImpact = impact.infectionsByRequestedTime;
   const dailyIncome = region.avgDailyIncomeInUSD;
   const incomePopulation = region.avgDailyIncomePopulation;
-  // const totalPopulation = population;
-
-  // const populationIncome = incomePopulation * totalPopulation;
 
   // * populationIncome
   const hospitalizedImpact = impact.infectionsByRequestedTime;
@@ -107,8 +98,8 @@ const covid19ImpactEstimator = (data) => {
 
   // severe impact
 
-  const casesForICUByReqTimeSevere = (severeImpact.infectionsByRequestedTime / 100) * 5;
-  const casesForVBRTS = (severeImpact.infectionsByRequestedTime / 100) * 2;
+  const casesForICUByReqTimeSevere = getCasesForICU(severeImpact.infectionsByRequestedTime);
+  const casesForVBRTS = getCasesforVentilator(severeImpact.infectionsByRequestedTime);
   // const ibrtSevere = severeImpact.infectionsByRequestedTime;
 
   // * populationIncome

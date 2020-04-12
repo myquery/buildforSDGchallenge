@@ -61,19 +61,19 @@ class Impact {
   // Compute value for available beds per hospital
   availableBedsPerHospitalForImpact() {
     // const timed = this.timeToDays();
-    const capacity = this.beds * 0.95;
-    const availableBedsForSevereCases = capacity * 0.35;
+    // const capacity = this.beds * 0.95;
+    // const availableBedsForSevereCases = capacity * 0.35;
     const hospitalSevereCases = this.impactCases();
-    return Math.trunc(availableBedsForSevereCases - hospitalSevereCases);
+    return Math.trunc(this.beds - hospitalSevereCases);
   }
 
   // Compute value for available beds per hospital
   availableBedsPerHospitalForSevere() {
     // const timed = this.timeToDays();
-    const capacity = this.beds * 0.95;
-    const availableBedsForSevereCases = capacity * 0.35;
+    // const capacity = this.beds * 0.95;
+    // const availableBedsForSevereCases = capacity * 0.35;
     const hospitalSevereCases = this.severeCases();
-    return Math.trunc(availableBedsForSevereCases - hospitalSevereCases);
+    return Math.trunc(this.beds - hospitalSevereCases);
   }
 
   // compute value for ICU patients

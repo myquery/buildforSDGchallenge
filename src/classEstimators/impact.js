@@ -60,14 +60,16 @@ class Impact {
 
   // Compute value for available beds per hospital
   availableBedsPerHospitalForImpact() {
-    const availableBedsForImpactCases = this.beds * 0.35;
+    const percentageOfBeds = this.beds * 0.35;
+    const availableBedsForImpactCases = percentageOfBeds;
     const hospitalSevereCases = this.impactCases();
     return Math.trunc(availableBedsForImpactCases - hospitalSevereCases);
   }
 
   // Compute value for available beds per hospital
   availableBedsPerHospitalForSevere() {
-    const availableBedsForSevereCases = this.beds * 0.35;
+    const percentageOfBeds = this.beds * 0.35;
+    const availableBedsForSevereCases = percentageOfBeds;
     const hospitalSevereCases = this.severeCases();
     return Math.trunc(availableBedsForSevereCases - hospitalSevereCases);
   }

@@ -23,7 +23,7 @@ class Impact {
   }
 
   currentlyInfectedByRegion(multiply) {
-    return this.cases * multiply;
+    return Math.trunc(this.cases * multiply);
   }
 }
 
@@ -73,7 +73,7 @@ const covid19ImpactEstimator = (data) => {
 
 
   // severe impact (first challenge)
-  const currentlyInfectedSevere = reportedCases * 50;
+  const currentlyInfectedSevere = estimator.currentlyInfectedByRegion(50);
   const infectionsByRequestedTimeSevere = currentlyInfectedSevere * factor;
 
   output.severeImpact.currentlyInfected = currentlyInfectedSevere;

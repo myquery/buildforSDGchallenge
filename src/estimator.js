@@ -61,57 +61,50 @@ const covid19ImpactEstimator = (data) => {
 
   const { impact, severeImpact } = output;
 
-  const averageBedsOccupied = avgOccupiedBeds(totalHospitalBeds);
-  const averageAvialableBeds = totalHospitalBeds - averageBedsOccupied;
-  const severeCasesByReqTimeImpact = severeCasesByTime(impact.infectionsByRequestedTime);
-  const hospitalBedsByReqTimeImpact = Math.trunc(averageAvialableBeds - severeCasesByReqTimeImpact);
+  const avgBedsOccupied = avgOccupiedBeds(totalHospitalBeds);
+  const avgAvialableBeds = totalHospitalBeds - avgBedsOccupied;
+  const dataFromImpactInfected = impact.infectionsByRequestedTime;
+  const impactCasesByRequestedTime = severeCasesByTime(dataFromImpactInfected);
+  const requestedHospitalBeds = Math.trunc(avgAvialableBeds - impactCasesByRequestedTime);
 
-  output.impact.severeCasesByRequestedTime = severeCasesByReqTimeImpact;
-  output.impact.hospitalBedsByRequestedTime = hospitalBedsByReqTimeImpact;
+  output.impact.severeCasesByRequestedTime = impactCasesByRequestedTime;
+  output.impact.hospitalBedsByRequestedTime = requestedHospitalBeds;
 
-  const severeCasesByReqTimeSevere = severeCasesByTime(severeImpact.infectionsByRequestedTime);
-  const hospitalBedByReqTimeS = Math.trunc(averageAvialableBeds - severeCasesByReqTimeSevere);
+  const dataFromSevereInfected = severeImpact.infectionsByRequestedTime;
+  const severeCasesByReqTimeSevere = severeCasesByTime(dataFromSevereInfected);
+  const hospitalBedByReqTimeS = Math.trunc(avgAvialableBeds - severeCasesByReqTimeSevere);
 
   output.severeImpact.severeCasesByRequestedTime = severeCasesByReqTimeSevere;
   output.severeImpact.hospitalBedsByRequestedTime = hospitalBedByReqTimeS;
 
-  /* Third challenge */
+  // Challenge three for impact cases
 
-  // impact
-  const casesForICUByReqTimeImpact = getCasesForICU(impact.infectionsByRequestedTime);
-  const casesForVentByReqTimeI = getCasesforVentilator(impact.infectionsByRequestedTime);
+  const casesForICUByTimeImpact = getCasesForICU(impact.infectionsByRequestedTime);
+  const casesForVentTimeImpact = getCasesforVentilator(impact.infectionsByRequestedTime);
 
-  const dailyIncome = region.avgDailyIncomeInUSD;
-  const incomePopulation = region.avgDailyIncomePopulation;
+  const dailyIncomePerRegion = region.avgDailyIncomeInUSD;
+  const incomePopulationPerRegion = region.avgDailyIncomePopulation;
 
-  // * populationIncome
   const hospitalizedImpact = impact.infectionsByRequestedTime;
-  const y = hospitalizedImpact * incomePopulation * dailyIncome;
-  const dollarsInFlightImpact = y / period;
+  const economyLoss = hospitalizedImpact * incomePopulationPerRegion * dailyIncomePerRegion;
+  const dollarsInFlightImpact = Math.trunc(economyLoss / period);
 
 
-  const roundUpImpact = Math.trunc(dollarsInFlightImpact);
-
-  output.impact.casesForICUByRequestedTime = Math.trunc(casesForICUByReqTimeImpact);
-  output.impact.casesForVentilatorsByRequestedTime = Math.trunc(casesForVentByReqTimeI);
-  output.impact.dollarsInFlight = roundUpImpact;
-
-  // severe impact
+  output.impact.casesForICUByRequestedTime = Math.trunc(casesForICUByTimeImpact);
+  output.impact.casesForVentilatorsByRequestedTime = Math.trunc(casesForVentTimeImpact);
+  output.impact.dollarsInFlight = dollarsInFlightImpact;
 
   const casesForICUByReqTimeSevere = getCasesForICU(severeImpact.infectionsByRequestedTime);
   const casesForVBRTS = getCasesforVentilator(severeImpact.infectionsByRequestedTime);
-  // const ibrtSevere = severeImpact.infectionsByRequestedTime;
 
   // * populationIncome
   const hospitalizedSevere = severeImpact.infectionsByRequestedTime;
-  const z = hospitalizedSevere * incomePopulation * dailyIncome;
-  const dollarsInFlightSevere = z / period;
-  const roundUpSevere = Math.trunc(dollarsInFlightSevere);
-
+  const moneyLost = hospitalizedSevere * incomePopulationPerRegion * dailyIncomePerRegion;
+  const dollarsInFlightSevere = Math.trunc(moneyLost / period);
 
   output.severeImpact.casesForICUByRequestedTime = Math.trunc(casesForICUByReqTimeSevere);
   output.severeImpact.casesForVentilatorsByRequestedTime = Math.trunc(casesForVBRTS);
-  output.severeImpact.dollarsInFlight = roundUpSevere;
+  output.severeImpact.dollarsInFlight = dollarsInFlightSevere;
 
   return output;
 };

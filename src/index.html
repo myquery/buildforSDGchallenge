@@ -41,7 +41,7 @@
                     id="population" 
                     name="population" 
                     placeholder="Enter population by region" 
-                    aria-placeholder="Enter population by region"  
+                    aria-placeholder="Enter population by region"
                     data-population 
                     class="control">
                 </div>
@@ -79,8 +79,8 @@
                     class="control">
                 </div>
                 <div class="input-control">
-                    <label for="totalHospitalBeds">Period Type</label>
-                    <select id="periodType" data-period-type class="control" type>
+                    <label for="periodType">Period Type</label>
+                    <select id="periodType" data-period-type class="control"  name="periodType">
                         <option value="">Select Period Type</option>
                         <option value="days">Days</option>
                         <option value="Weeks">Weeks</option>
@@ -113,11 +113,26 @@
     </noscript>
     <script>
         (function(){
-            if('serviceWorker' in navigator){
-                navigator.serviceWorker.register('./service-worker.js', {scope: '/'})
-                .then(()=> console.log('Service worker registered'))
-                .catch(error => console.log('Service worker registration failed', error))
-            }
+            if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+  .then(function(registration) {
+    registration.addEventListener('updatefound', function() {
+      // If updatefound is fired, it means that there's
+      // a new service worker being installed.
+      var installingWorker = registration.installing;
+      console.log('A new service worker is being installed:',
+        installingWorker);
+
+      // You can listen for changes to the installing service worker's
+      // state via installingWorker.onstatechange
+    });
+  })
+  .catch(function(error) {
+    console.log('Service worker registration failed:', error);
+  });
+} else {
+  console.log('Service workers are not supported.');
+}
         })()
     </script>
     <script type="module" src="./index.js"></script>

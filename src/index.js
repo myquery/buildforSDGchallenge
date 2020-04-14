@@ -15,7 +15,7 @@ const goEstimate = () => {
       avgDailyIncomeInUSD: 5,
       avgDailyIncomePopulation: 0.71
     },
-    periodType: parseInt(periodType, 10),
+    periodType,
     timeToElapse: parseInt(timeToElapse, 10),
     reportedCases: parseInt(reportedCases, 10),
     population: parseInt(population, 10),

@@ -15,12 +15,12 @@
             <div class="covid-estimator">
                 <h1>Covid-19</h1>
                 <h3>Impact Estimator App</h3>
-                <form action="">
-                    <fieldset>
+                <form action method="POST">
+            
                 <div class="region">
                     <div class="input-control">
                       <label for="region">Region</label>
-                      <select name="region" id="region">
+                      <select name="region" id="region" data-region="region">
                         <option value="Africa">Africa</option>
                       </select>
                     </div>
@@ -42,52 +42,49 @@
                         <label for="population">Population</label>
                         <input 
                         type="number" 
-                        id="population" 
+                        id="data-population" 
                         name="population" 
                         placeholder="Enter population by region" 
-                        aria-placeholder="Enter population by region"
-                        data-population 
+                        data-population="population"
                         class="control"
                         required>
                     </div>
                     <div class="input-control">
-                        <label for="timeToElapse">Time To Elapse </label>
+                        <label for="data-time-to-elapse">Time To Elapse </label>
                         <input 
                         type="number" 
-                        id="timeToElapse"
-                        name="timeToElapse"
-                        data-time-to-elapse
-                        placeholder="Enter time to elapse by region" 
-                         
+                        id="data-time-to-elapse"
+                        name="data-time-to-elapse"
+                        data-time-to-elapse="timeToElapse"
+                        placeholder="Enter time to elapse by region"                    
                         class="control"
                         required>
                     </div>
                     <div class="input-control">
-                        <label for="reportedCases">Reported Cases </label>
+                        <label for="data-reported-cases">Reported Cases </label>
                         <input 
                         type="number" 
-                        id="reportedCases"
-                        name="reportedCases" 
-                        data-reported-cases
+                        id="data-reported-cases"
+                        name="Period" 
+                        data-reported-cases="reportedCases"
                         placeholder="Enter total number of reported cases by region" 
-                        
                         class="control"
                         required>
                     </div>
                     <div class="input-control">
-                        <label for="totalHospitalBeds">Total Hospital Beds Available</label>
+                        <label for="data-total-hospital-beds">Total Hospital Beds Available</label>
                         <input 
                         type="number" 
-                        id="totalHospitalBeds"
-                        name="totalHospitalBeds"
-                        placeholder="Enter total number of Hospital Beds Available by region" 
-                        data-total-hospital-beds 
+                        id="data-total-hospital-beds "
+                        name="Beds"
+                        placeholder="Enter total number of Hospital Beds Available by region"
+                        data-total-hospital-beds="totalHospitalBeds"
                         class="control"
                         required>
                     </div>
                     <div class="input-control">
-                        <label for="periodType">Period Type</label>
-                        <select id="periodType" data-period-type class="control"  name="periodType" required>
+                        <label for="data-period-type">Period Type</label>
+                        <select id="data-period-type" class="control"  name="periodType" required>
                             <option value="">Select Period Type</option>
                             <option value="days">Days</option>
                             <option value="Weeks">Weeks</option>
@@ -96,9 +93,9 @@
     
                     </div>
                     <div class="input-control">
-                        <button data-go-estimate type="button">Go Estimate</button>
+                        <button  id="data-go-estimate" type="submit">Go Estimate</button>
                     </div>
-                </fieldset>
+                
     
                 </form>
             </div>

@@ -27,6 +27,6 @@ const goEstimate = () => {
 };
 
 const onSubmited = () => {
-  document.getElementById('#data-go-estimate').onclick = () => goEstimate();
+  document.querySelector('button[data-go-estimate]').onclick = () => goEstimate();
 };
 window.onload = onSubmited;

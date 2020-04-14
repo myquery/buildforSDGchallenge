@@ -12,7 +12,7 @@ const timeToDays = (periodType, count) => {
 };
 
 const currentlyInfected = (cases, multiplier) => cases * multiplier;
-const infectionsByReqTime = (infected, factor) => infected * factor;
+const infectionsByReqTime = (infected, factor) => Math.trunc(infected * factor);
 const avgOccupiedBeds = (availableBeds) => availableBeds * 0.65;
 const severeCasesByTime = (severeCases) => Math.trunc(severeCases * 0.15);
 const getCasesForICU = (infected) => infected * 0.05;

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keyword" content="covid-19 pandemic, global lockdown, coronavirus pandemic, 2020 global pandemic, chinese virus"/>
     <meta name="description" content="coronavirus pandemic 2020 estimtor, app that help estimate global lockdown 2020, app that will help health system and world leader prepare for the real probelm of covid-19, estimate the economic impact of  covid-19 to the economy including the supply chains, the health system, virus that started in china and spread to the whole world, app that will help estimate the rapid spread of the coronavirus (COVID-19) pandemic. "/>
-    <script type="module" src="./index.js"></script>
     <link rel="stylesheet" type="text/css" href="index.css" />
+    <script type="module" src="./index.js"></script>
     <title>Covid-19 Impact Estimator </title>
 </head>
 <body>
@@ -19,8 +19,8 @@
                   
                 <div class="region">
                     <div class="input-control">
-                      <label for="region">Region</label>
-                      <select name="region" id="region" data-region="region">
+                      <label for="data-region">Region</label>
+                      <select name="region" id="data-region" data-region="region">
                         <option value="Africa">Africa</option>
                       </select>
                     </div>
@@ -75,15 +75,16 @@
                         <label for="data-total-hospital-beds ">Total Hospital Beds Available</label>
                         <input 
                         type="number" 
-                        id="tdata-total-hospital-beds "
+                        id="tdata-total-hospital-beds"
                         name="totalHospitalBeds"
                         placeholder="Enter total number of Hospital Beds Available by region" 
                         data-total-hospital-beds 
-                        class="control">
+                        class="control"
+                        required>
                     </div>
                     <div class="input-control">
                         <label for="data-period-type">Period Type</label>
-                        <select id="data-period-type" data-period-type class="control"  name="periodType">
+                        <select id="data-period-type" data-period-type class="control"  name="periodType" required>
                             <option value="">Select Period Type</option>
                             <option value="days">Days</option>
                             <option value="Weeks">Weeks</option>

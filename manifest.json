@@ -1,6 +1,6 @@
 {
-  "name": "Developer for Life",
-  "short_name": "dev4life",
+  "name": "Covid-19 Impact Estimator App",
+  "short_name": "Covid-19-app",
   "icons": [{
       "src": "/src/img/covid-19-bkg.jpg",
       "sizes": "128x128",

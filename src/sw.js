@@ -29,8 +29,7 @@ self.addEventListener('activate', (event) => {
       .then((keys) =>
         // Remove caches whose name is no longer valid
         // eslint-disable-next-line implicit-arrow-linebreak
-        Promise.all(keys
-          .filter((key) => key.indexOf(version) !== 0)
+        Promise.all(keys.filter((key) => key.indexOf(version) !== 0)
           .map((key) => caches.delete(key))))
   );
 });

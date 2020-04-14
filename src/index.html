@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="covid-19 pandemic, global lockdown, coronavirus pandemic, 2020 global pandemic, chinese virus"/>
+    <meta name="description" content="coronavirus pandemic 2020 estimtor, app that help estimate global lockdown 2020, app that will help health system and world leader prepare for the real probelm of covid-19, estimate the economic impact of  covid-19 to the economy including the supply chains, the health system, virus that started in china and spread to the whole world, app that will help estimate the rapid spread of the coronavirus (COVID-19) pandemic. "/>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <script type="module" src="./index.js"></script>
+    <title>Covid-19 Impact Estimator </title>
+</head>
+<body>
+    <main role="main">
+        <div class="container">
+            <div class="covid-estimator">
+                <h1>Covid-19</h1>
+                <h3>Impact Estimator App</h3>
+                <form action>
+                  
+                <div class="region">
+                    <div class="input-control">
+                      <label for="data-region">Region</label>
+                      <select name="region" id="data-region" data-region="region">
+                        <option value="Africa">Africa</option>
+                      </select>
+                    </div>
+                    <span class="region-info">
+                      <span>Average Age :</span>
+                      <span>19.7</span>
+                    </span>
+                    <span class="region-info">
+                      <span>Average Daily Income :</span>
+                      <span>5</span>
+                    </span>
+                    <span class="region-info">
+                      <span>Average Daily Income Population :</span>
+                      <span>0.71</span>
+                    </span>
+                  </div>
+                
+                    <div class="input-control">
+                        <label for="data-population">Population</label>
+                        <input 
+                        type="number" 
+                        id="data-population" 
+                        name="population" 
+                        placeholder="Enter population by region" 
+                        data-population 
+                        class="control"
+                        required>
+                    </div>
+                    <div class="input-control">
+                        <label for="data-time-to-elapse">Time To Elapse </label>
+                        <input 
+                        type="number" 
+                        id="data-time-to-elapse"
+                        name="timeToElapse"
+                        data-time-to-elapse
+                        placeholder="Enter time to elapse by region" 
+                        class="control"
+                        required>
+                    </div>
+                    <div class="input-control">
+                        <label for="data-reported-cases">Reported Cases </label>
+                        <input 
+                        type="number" 
+                        id="data-reported-cases"
+                        name="reportedCases" 
+                        data-reported-cases
+                        placeholder="Enter total number of reported cases by region" 
+                        class="control"
+                        required>
+                    </div>
+                    <div class="input-control">
+                        <label for="data-total-hospital-beds ">Total Hospital Beds Available</label>
+                        <input 
+                        type="number" 
+                        id="tdata-total-hospital-beds"
+                        name="totalHospitalBeds"
+                        placeholder="Enter total number of Hospital Beds Available by region" 
+                        data-total-hospital-beds 
+                        class="control"
+                        required>
+                    </div>
+                    <div class="input-control">
+                        <label for="data-period-type">Period Type</label>
+                        <select id="data-period-type" data-period-type class="control"  name="periodType" required>
+                            <option value="">Select Period Type</option>
+                            <option value="days">Days</option>
+                            <option value="Weeks">Weeks</option>
+                            <option value="months">Months</option>
+                        </select>
+    
+                    </div>
+                    <div class="input-control">
+                        <button data-go-estimate type="button">Go Estimate</button>
+                    </div>
+                
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <noscript>
+        <form action="https://www.google.com/chrome/" method="GET" style="background-color: #fff; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999;">
+            <div style="font-size: 18px; 
+            font-family: Helvetica,sans-serif; 
+            line-height: 24px; margin: 10%; width: 80%;">
+              <p>We've detected that JavaScript 
+              is disabled in your browser. 
+              Would you like to switch to another browser?</p>
+              <p style="margin: 20px 0;">
+                <button type="submit" style="background-color: #f00;border-radius: 100px;border: none;box-shadow: none;color: #000;cursor: pointer;font-size: 14px;font-weight: bold;line-height: 20px;padding: 6px 16px;width: 121px;">
+                  OK</button>
+              </p>
+            </div>
+          </form>
+    </noscript>
+  </body>
+</html>
+

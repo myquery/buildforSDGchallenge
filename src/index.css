@@ -1,0 +1,127 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    
+    
+    }
+.covid-estimator{
+    width: 40%;
+    height: auto;
+    box-shadow:0px 1px 10px #ededed;
+    padding:1rem;
+    border: 1px solid #ededed;
+    border-radius: 0.4rem;
+        
+}
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .covid-estimator {
+      width: 80%;
+    }
+}
+h1{
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 0.3rem;
+    font-size: 1.9rem;
+    text-align: center;
+    text-shadow:0px 1px 2px #777;
+    
+}
+h3{
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    background:rgb(4, 50, 68);
+    width: 60%;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+      
+}
+.input-control{
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 1f 2f;
+}
+.input-control input{
+    margin-top: 0.7rem;
+    margin-bottom: 0.9rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: solid;
+    border-width: 0.2rem;
+    border-color: rgb(4, 50, 68);
+}
+
+.input-control label{
+   text-transform: uppercase;
+   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.input-control select{
+    margin-top: 0.5rem;
+    margin-bottom: 0.9rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: solid;
+    border-width: 0.2rem;
+    border-color: rgb(4, 50, 68);
+}
+
+.input-control button{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.9rem;
+    border-radius: 0.3rem;
+    border: solid;
+    border-width: 0.2rem;
+    border-color: rgb(4, 50, 68);
+    font-size: 1rem;
+    font-weight: bold;
+    background:rgb(4, 50, 68);
+    color: #fff;
+    box-shadow:0px 3px 10px #999;
+    box-sizing: border-box;
+}
+.region{
+background: #ededed;
+margin-bottom: 1rem;
+border-radius: 0.5rem;
+padding: 1rem;
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.region .input-control{
+  margin:0;
+    }
+ .region .region-info{
+    margin:10px;
+    padding: 10px;
+    border-radius: 0.3rem;
+    background: rgb(4, 50, 68);
+    color: #fff;
+    display: block;
+    }
+
+.input-control button:hover{
+  
+    border-color: rgb(12, 74, 99);
+    font-size: 1rem;
+    font-weight: bold;
+    background:rgb(12, 74, 99);;
+    color: #ddd;
+    box-shadow:0px 3px 10px #555;
+    box-sizing: border-box;
+}

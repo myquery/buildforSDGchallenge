@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keyword" content="covid-19 pandemic, global lockdown, coronavirus pandemic, 2020 global pandemic, chinese virus"/>
-    <meta name="description" content="coronavirus pandemic 2020 estimtor, app that help estimate global lockdown 2020, app that will help health system and world leader prepare for the real probelm of covid-19, estimate the economic impact of  covid-19 to the economy including the supply chains, the health system, virus that started in china and spread to the whole world, app that will help estimate the rapid spread of the coronavirus (COVID-19) pandemic. "/>
     <meta name="author" content="Ibe Stanley Arua"/>
    
     <link rel="stylesheet" type="text/css" href="index.css" />
+    <script type="module" src="./index.js"></script>
     <title>Covid-19 Impact Estimator </title>
 </head>
 <body>
@@ -16,7 +16,7 @@
             <div class="covid-estimator">
                 <h1>Covid-19</h1>
                 <h3>Impact Estimator App</h3>
-                <form action method="POST">
+                <form action>
             
                 <div class="region">
                     <div class="input-control">
@@ -94,7 +94,7 @@
     
                     </div>
                     <div class="input-control">
-                        <button  id="data-go-estimate" type="submit">Go Estimate</button>
+                        <button  data-go-estimate="data-go-estimate" type="submit" id="data-go-estimate">Go Estimate</button>
                     </div>
                 
     
@@ -102,7 +102,7 @@
             </div>
         </div>
     </main>
-    <script type="module" src="./index.js"></script>
+    
     <noscript>
         <form action="https://www.google.com/chrome/" method="GET" style="background-color: #fff; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999;">
             <div style="font-size: 18px; 

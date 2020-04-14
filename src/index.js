@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/extensions
-import covid19ImpactEstimator from './estimator.js';
+import covid19ImpactEstimator from './estimator';
 
 const goEstimate = () => {
   const population = document.querySelector('input[name="population"]').value;

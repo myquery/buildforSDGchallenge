@@ -16,6 +16,7 @@
                 <h1>Covid-19</h1>
                 <h3>Impact Estimator App</h3>
                 <form action="">
+                    <fieldset>
                 <div class="region">
                     <div class="input-control">
                       <label for="region">Region</label>
@@ -46,7 +47,8 @@
                         placeholder="Enter population by region" 
                         aria-placeholder="Enter population by region"
                         data-population 
-                        class="control">
+                        class="control"
+                        required>
                     </div>
                     <div class="input-control">
                         <label for="timeToElapse">Time To Elapse </label>
@@ -56,8 +58,9 @@
                         name="timeToElapse"
                         data-time-to-elapse
                         placeholder="Enter time to elapse by region" 
-                        aria-placeholder="Enter time to elapse by region"  
-                        class="control">
+                         
+                        class="control"
+                        required>
                     </div>
                     <div class="input-control">
                         <label for="reportedCases">Reported Cases </label>
@@ -67,8 +70,9 @@
                         name="reportedCases" 
                         data-reported-cases
                         placeholder="Enter total number of reported cases by region" 
-                        aria-placeholder="Enter total number of reported cases by region"
-                        class="control">
+                        
+                        class="control"
+                        required>
                     </div>
                     <div class="input-control">
                         <label for="totalHospitalBeds">Total Hospital Beds Available</label>
@@ -77,13 +81,13 @@
                         id="totalHospitalBeds"
                         name="totalHospitalBeds"
                         placeholder="Enter total number of Hospital Beds Available by region" 
-                        aria-placeholder="Enter total number of Hospital Beds Available by region" 
                         data-total-hospital-beds 
-                        class="control">
+                        class="control"
+                        required>
                     </div>
                     <div class="input-control">
                         <label for="periodType">Period Type</label>
-                        <select id="periodType" data-period-type class="control"  name="periodType">
+                        <select id="periodType" data-period-type class="control"  name="periodType" required>
                             <option value="">Select Period Type</option>
                             <option value="days">Days</option>
                             <option value="Weeks">Weeks</option>
@@ -94,7 +98,7 @@
                     <div class="input-control">
                         <button data-go-estimate type="button">Go Estimate</button>
                     </div>
-                    
+                </fieldset>
     
                 </form>
             </div>

@@ -15,7 +15,7 @@ const goEstimate = () => {
       avgDailyIncomeInUSD: 5,
       avgDailyIncomePopulation: 0.71
     },
-    periodType,
+    periodType: parseInt(periodType, 10),
     timeToElapse: parseInt(timeToElapse, 10),
     reportedCases: parseInt(reportedCases, 10),
     population: parseInt(population, 10),
@@ -27,6 +27,6 @@ const goEstimate = () => {
 };
 
 const onSubmited = () => {
-  document.querySelector('button[data-go-estimate]').onclick = () => goEstimate();
+  document.getElementById('#data-go-estimate').onclick = () => goEstimate();
 };
 window.onload = onSubmited;

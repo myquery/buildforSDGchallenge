@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keyword" content="covid-19 pandemic, global lockdown, coronavirus pandemic, 2020 global pandemic, chinese virus"/>
-    <meta name="author" content="Ibe Stanley Arua"/>
-   
-    <link rel="stylesheet" type="text/css" href="index.css" />
+    <meta name="description" content="coronavirus pandemic 2020 estimtor, app that help estimate global lockdown 2020, app that will help health system and world leader prepare for the real probelm of covid-19, estimate the economic impact of  covid-19 to the economy including the supply chains, the health system, virus that started in china and spread to the whole world, app that will help estimate the rapid spread of the coronavirus (COVID-19) pandemic. "/>
     <script type="module" src="./index.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css" />
     <title>Covid-19 Impact Estimator </title>
 </head>
 <body>
@@ -17,7 +16,7 @@
                 <h1>Covid-19</h1>
                 <h3>Impact Estimator App</h3>
                 <form action>
-            
+                  
                 <div class="region">
                     <div class="input-control">
                       <label for="region">Region</label>
@@ -46,7 +45,7 @@
                         id="data-population" 
                         name="population" 
                         placeholder="Enter population by region" 
-                        data-population="population"
+                        data-population 
                         class="control"
                         required>
                     </div>
@@ -55,9 +54,9 @@
                         <input 
                         type="number" 
                         id="data-time-to-elapse"
-                        name="data-time-to-elapse"
-                        data-time-to-elapse="timeToElapse"
-                        placeholder="Enter time to elapse by region"                    
+                        name="timeToElapse"
+                        data-time-to-elapse
+                        placeholder="Enter time to elapse by region" 
                         class="control"
                         required>
                     </div>
@@ -66,26 +65,25 @@
                         <input 
                         type="number" 
                         id="data-reported-cases"
-                        name="Period" 
-                        data-reported-cases="reportedCases"
+                        name="reportedCases" 
+                        data-reported-cases
                         placeholder="Enter total number of reported cases by region" 
                         class="control"
                         required>
                     </div>
                     <div class="input-control">
-                        <label for="data-total-hospital-beds">Total Hospital Beds Available</label>
+                        <label for="data-total-hospital-beds ">Total Hospital Beds Available</label>
                         <input 
                         type="number" 
-                        id="data-total-hospital-beds"
-                        name="Beds"
-                        placeholder="Enter total number of Hospital Beds Available by region"
-                        data-total-hospital-beds="totalHospitalBeds"
-                        class="control"
-                        required>
+                        id="tdata-total-hospital-beds "
+                        name="totalHospitalBeds"
+                        placeholder="Enter total number of Hospital Beds Available by region" 
+                        data-total-hospital-beds 
+                        class="control">
                     </div>
                     <div class="input-control">
                         <label for="data-period-type">Period Type</label>
-                        <select id="data-period-type" class="control"  name="periodType" required>
+                        <select id="data-period-type" data-period-type class="control"  name="periodType">
                             <option value="">Select Period Type</option>
                             <option value="days">Days</option>
                             <option value="Weeks">Weeks</option>
@@ -94,10 +92,9 @@
     
                     </div>
                     <div class="input-control">
-                        <button  data-go-estimate="data-go-estimate" type="submit" id="data-go-estimate">Go Estimate</button>
+                        <button data-go-estimate type="button">Go Estimate</button>
                     </div>
                 
-    
                 </form>
             </div>
         </div>
@@ -118,7 +115,6 @@
             </div>
           </form>
     </noscript>
-    
   </body>
 </html>
 

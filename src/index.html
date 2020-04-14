@@ -10,93 +10,97 @@
     <title>Covid-19 Impact Estimator </title>
 </head>
 <body>
-    <div class="container">
-        <div class="covid-estimator">
-            <h1>Covid-19</h1>
-            <h3>Impact Estimator App</h3>
-            <div class="region">
-                <span class="region-info">
-                  <label for="region">Region</label>
-                  <select name="region" id="region">
-                    <option value="Africa">Africa</option>
-                  </select>
-                </span>
-                <span class="region-info">
-                  <span>Average Age :</span>
-                  <span>19.7</span>
-                </span>
-                <span class="region-info">
-                  <span>Average Daily Income :</span>
-                  <span>5</span>
-                </span>
-                <span class="region-info">
-                  <span>Average Daily Income Population :</span>
-                  <span>0.71</span>
-                </span>
-              </div>
-            <form>
-                <div class="input-control">
-                    <label for="population">Population</label>
-                    <input 
-                    type="number" 
-                    id="population" 
-                    name="population" 
-                    placeholder="Enter population by region" 
-                    aria-placeholder="Enter population by region"
-                    data-population 
-                    class="control">
-                </div>
-                <div class="input-control">
-                    <label for="timeToElapse ">Time To Elapse </label>
-                    <input 
-                    type="number" 
-                    id="timeToElapse"
-                    name="timeToElapse"
-                    data-time-to-elapse
-                    placeholder="Enter time to elapse by region" 
-                    aria-placeholder="Enter time to elapse by region"  
-                    class="control">
-                </div>
-                <div class="input-control">
-                    <label for="reportedCases">Reported Cases </label>
-                    <input 
-                    type="number" 
-                    id="reportedCases"
-                    name="reportedCases" 
-                    data-reported-cases
-                    placeholder="Enter total number of reported cases by region" 
-                    aria-placeholder="Enter total number of reported cases by region"
-                    class="control">
-                </div>
-                <div class="input-control">
-                    <label for="totalHospitalBeds">Total Hospital Beds Available</label>
-                    <input 
-                    type="number" 
-                    id="totalHospitalBeds"
-                    name="totalHospitalBeds"
-                    placeholder="Enter total number of Hospital Beds Available by region" 
-                    aria-placeholder="Enter total number of Hospital Beds Available by region" 
-                    data-total-hospital-beds 
-                    class="control">
-                </div>
-                <div class="input-control">
-                    <label for="periodType">Period Type</label>
-                    <select id="periodType" data-period-type class="control"  name="periodType">
-                        <option value="">Select Period Type</option>
-                        <option value="days">Days</option>
-                        <option value="Weeks">Weeks</option>
-                        <option value="months">Months</option>
-                    </select>
-
-                </div>
-                <div class="input-control">
-                    <button data-go-estimate>Go Estimate</button>
-                </div>
+    <main role="main">
+        <div class="container">
+            <div class="covid-estimator">
+                <h1>Covid-19</h1>
+                <h3>Impact Estimator App</h3>
+                <form action="">
+                <div class="region">
+                    <span class="region-info">
+                      <label for="region">Region</label>
+                      <select name="region" id="region">
+                        <option value="Africa">Africa</option>
+                      </select>
+                    </span>
+                    <span class="region-info">
+                      <span>Average Age :</span>
+                      <span>19.7</span>
+                    </span>
+                    <span class="region-info">
+                      <span>Average Daily Income :</span>
+                      <span>5</span>
+                    </span>
+                    <span class="region-info">
+                      <span>Average Daily Income Population :</span>
+                      <span>0.71</span>
+                    </span>
+                  </div>
                 
-
-            </form>
+                    <div class="input-control">
+                        <label for="population">Population</label>
+                        <input 
+                        type="number" 
+                        id="population" 
+                        name="population" 
+                        placeholder="Enter population by region" 
+                        aria-placeholder="Enter population by region"
+                        data-population 
+                        class="control">
+                    </div>
+                    <div class="input-control">
+                        <label for="timeToElapse">Time To Elapse </label>
+                        <input 
+                        type="number" 
+                        id="timeToElapse"
+                        name="timeToElapse"
+                        data-time-to-elapse
+                        placeholder="Enter time to elapse by region" 
+                        aria-placeholder="Enter time to elapse by region"  
+                        class="control">
+                    </div>
+                    <div class="input-control">
+                        <label for="reportedCases">Reported Cases </label>
+                        <input 
+                        type="number" 
+                        id="reportedCases"
+                        name="reportedCases" 
+                        data-reported-cases
+                        placeholder="Enter total number of reported cases by region" 
+                        aria-placeholder="Enter total number of reported cases by region"
+                        class="control">
+                    </div>
+                    <div class="input-control">
+                        <label for="totalHospitalBeds">Total Hospital Beds Available</label>
+                        <input 
+                        type="number" 
+                        id="totalHospitalBeds"
+                        name="totalHospitalBeds"
+                        placeholder="Enter total number of Hospital Beds Available by region" 
+                        aria-placeholder="Enter total number of Hospital Beds Available by region" 
+                        data-total-hospital-beds 
+                        class="control">
+                    </div>
+                    <div class="input-control">
+                        <label for="periodType">Period Type</label>
+                        <select id="periodType" data-period-type class="control"  name="periodType">
+                            <option value="">Select Period Type</option>
+                            <option value="days">Days</option>
+                            <option value="Weeks">Weeks</option>
+                            <option value="months">Months</option>
+                        </select>
+    
+                    </div>
+                    <div class="input-control">
+                        <button data-go-estimate type="button">Go Estimate</button>
+                    </div>
+                    
+    
+                </form>
+            </div>
         </div>
-    </div>
+    </main>
+    
     <noscript>
         <form action="https://www.google.com/chrome/" method="GET" style="background-color: #fff; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999;">
             <div style="font-size: 18px; 
@@ -112,7 +116,7 @@
             </div>
           </form>
     </noscript>
-    <script>
+    <!-- <script>
         (function(){
             if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
@@ -135,7 +139,7 @@
   console.log('Service workers are not supported.');
 }
         })()
-    </script>
+    </script> -->
    
 </body>
 </html>

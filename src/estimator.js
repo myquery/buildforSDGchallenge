@@ -18,6 +18,7 @@ const severeCasesByTime = (severeCases) => Math.trunc(severeCases * 0.15);
 const getCasesForICU = (infected) => infected * 0.05;
 const getCasesforVentilator = (infected) => infected * 0.02;
 
+
 const covid19ImpactEstimator = (data) => {
   /* first challenge */
 
